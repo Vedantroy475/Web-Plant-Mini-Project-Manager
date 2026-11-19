@@ -2,11 +2,11 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAppSelector } from '@/store/hooks';
+import { useAppSelector, type RootState } from '@/store/hooks';
 
 export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const { isAuthenticated, initializing } = useAppSelector((state) => state.auth);
+  const { isAuthenticated, initializing } = useAppSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     if (!initializing && !isAuthenticated) {

@@ -18,6 +18,7 @@
     --foreground: #ededed;
   }
 }
+@layer base { button:not(:disabled) { cursor: pointer; } }
 
 body {
   background: var(--background);

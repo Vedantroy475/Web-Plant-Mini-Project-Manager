@@ -7,7 +7,7 @@ const userSchema= new mongoose.Schema(
             type: String, 
             required: [true, 'Name is required'],
             trim: true,
-            maxLength: [60, 'Name cannot exceed 60 characters']
+            maxlength: [60, 'Name cannot exceed 60 characters']
         },
 
         email: {
@@ -22,7 +22,7 @@ const userSchema= new mongoose.Schema(
         password: {
             type: String,
             required: [true, 'Password is required'],
-            minLength: [6, 'Password must be atleast 6 characters'],
+            minlength: [6, 'Password must be atleast 6 characters'],
             select: false, // Exclusive password by default when querying users
         },
     },
@@ -38,7 +38,7 @@ userSchema.pre('save', async function(next){
     
     const salt= await bcrypt.genSalt(10);
     this.password= await bcrypt.hash(this.password, salt);
-    next();
+  
 });
 
 
